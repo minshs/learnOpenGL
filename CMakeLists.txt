@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 2.8)
+
+project(learnOpenGL)
+
+SET(${PROJECT_NAME}_MAJOR_VERSION 0)
+SET(${PROJECT_NAME}_MINOR_VERSION 1)
+SET(${PROJECT_NAME}_PATCH_LEVEL 0)
+
+SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMake/Modules/" ${CMAKE_MODULE_PATH})
+MESSAGE(">>> CMAKE_MODULE_PATH = ${CMAKE_MODULE_PATH}")
+
+find_package(OpenGL REQUIRED)
+
+find_package(GLFW REQUIRED)
+include_directories(${GLFW_INCLUDE_DIR})
+
+find_package(GLEW REQUIRED)
+include_directories(${GLEW_INCLUDE_DIR})
+
+set(LEARNOPENGL_REQUIRED_LIBS
+    ${GLFW_LIBRARIES}
+    ${GLEW_LIBRARIES}
+    ${OPENGL_LIBRARY}
+)
+
+add_subdirectory(example)
